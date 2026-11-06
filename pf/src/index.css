@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Oswald:wght@200..700&display=swap');
+
 :root,
 [data-theme="light"] {
   --grain-opacity: 0.18;
@@ -9,13 +12,61 @@
   --grain-invert: 1;
 }
 
+:root,
+[data-theme="light"] {
+  --ribbon-bg: #1F7A6F;
+  --ribbon-text: #FAF9F6;
+}
+
+[data-theme="dark"] {
+  --ribbon-bg: #5FD0C0;
+  --ribbon-text: #0E1A1F;
+}
+
 .grain {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 0;
   pointer-events: none;
   opacity: var(--grain-opacity);
   filter: invert(var(--grain-invert));
   background-size: 300px 300px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.6 -0.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.nav { z-index: 100; }
+
+h1 {
+    color: #264653;
+    font-family: "Oswald", sans-serif;
+    font-size: 88px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 10px;
+    letter-spacing: -2.96px;
+}
+
+.home-desc {
+    color: #335c6c;
+    text-align: center;
+    font-family: "Bricolage Grotesque";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 1.44px;
+    max-width: 80%;
+    margin-inline: auto;
+}
+
+.home-card h1,
+.home-card .home-desc {
+    text-align: center;
+}
+
+.home-desc--first { margin-top: 95px; }
