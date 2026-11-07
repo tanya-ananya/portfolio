@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+/* import { useEffect, useRef } from 'react';
 import { createNoise3D } from 'simplex-noise';
 
 // Defined outside the component so the reference stays stable between renders
@@ -12,6 +12,26 @@ export default function ShiftBackground({
   backgroundColor = 'hsla(40,20%,97%,1)',
   blobCount = 9,
   speed = 1, // 0.5 = slower, 2 = faster
+}) { */
+
+import { useEffect, useRef } from 'react';
+import { createNoise3D } from 'simplex-noise';
+
+/* const DEFAULT_COLORS = ['#FD6E6E', '#c793c0', '#9277a5', '#d4f4ff', '#FD6E6E', '#c793c0']; */
+
+const DEFAULT_COLORS = ['#fd6e6ea5', '#c793c0a4', '#9277a59e', '#d4f4ffdf', '#fd6e6e73', '#c793c0b0'];
+
+const hexToRgb = (hex) => {
+  const n = parseInt(hex.slice(1), 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+};
+
+export default function ShiftBackground({
+  colors = DEFAULT_COLORS,
+  maxAlpha = 0.6,
+  backgroundColor = '#FFF8EC',
+  blobCount = 9,
+  speed = 2.5,
 }) {
   const canvasRef = useRef(null);
 
@@ -21,10 +41,15 @@ export default function ShiftBackground({
     const noise3D = createNoise3D();
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Each blob keeps its own seed (path), color, and size for its whole life
-    const blobs = Array.from({ length: blobCount }, (_, i) => ({
+    /* const blobs = Array.from({ length: blobCount }, (_, i) => ({
       seed: i * 37.7 + Math.random() * 100,
       hue: palette[i % palette.length],
+      size: 0.7 + Math.random() * 0.6,
+    })); */
+
+    const blobs = Array.from({ length: blobCount }, (_, i) => ({
+      seed: i * 37.7 + Math.random() * 100,
+      rgb: hexToRgb(colors[i % colors.length]),
       size: 0.7 + Math.random() * 0.6,
     }));
 
@@ -44,16 +69,20 @@ export default function ShiftBackground({
       ctx.fillRect(0, 0, w, h);
 
       for (const b of blobs) {
-        // Smooth noise gives curvy, never-repeating paths
         const x = w * (0.5 + 0.55 * noise3D(b.seed, 0, t));
         const y = h * (0.5 + 0.7 * noise3D(b.seed, 50, t));
-        // Slow "breathing" so blobs swell and shrink as they move
         const r = ((w + h) / 2) * 0.3 * b.size * (1 + 0.15 * noise3D(b.seed, 100, t * 1.5));
 
-        const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+        /* const g = ctx.createRadialGradient(x, y, 0, x, y, r);
         g.addColorStop(0, `hsla(${b.hue},${saturation}%,${lightness}%,${maxAlpha})`);
         g.addColorStop(0.55, `hsla(${b.hue},${saturation}%,${lightness}%,${maxAlpha * 0.6})`);
-        g.addColorStop(1, `hsla(${b.hue},${saturation}%,${lightness}%,0)`);
+        g.addColorStop(1, `hsla(${b.hue},${saturation}%,${lightness}%,0)`); */
+
+        const [r0, g0, b0] = b.rgb;
+        const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+        g.addColorStop(0, `rgba(${r0},${g0},${b0},${maxAlpha})`);
+        g.addColorStop(0.55, `rgba(${r0},${g0},${b0},${maxAlpha * 0.6})`);
+        g.addColorStop(1, `rgba(${r0},${g0},${b0},0)`);
 
         ctx.fillStyle = g;
         ctx.fillRect(x - r, y - r, r * 2, r * 2);
@@ -82,7 +111,7 @@ export default function ShiftBackground({
       cancelAnimationFrame(frameId);
       window.removeEventListener('resize', onResize);
     };
-  }, [palette, saturation, lightness, maxAlpha, backgroundColor, blobCount, speed]);
+  }, [colors, maxAlpha, backgroundColor, blobCount, speed]); /* [palette, saturation, lightness, maxAlpha, backgroundColor, blobCount, speed]); */
 
   return (
     <canvas

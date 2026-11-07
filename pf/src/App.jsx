@@ -4,9 +4,36 @@ import GlassCard from './components/GlassCard';
 import ProjectCard from './components/ProjectCard';
 import SkillsRibbon from './components/SkillsRibbon';
 
+/* const LIGHT_PALETTE = [270, 308, 308, 0, 39, 195];
+const DARK_PALETTE = [243, 270, 308, 0]; */
+const LIGHT_COLORS = ['#FD6E6E', '#c793c0', '#9277a5', '#d4f4ff', '#FD6E6E', '#c793c0'];
+const DARK_COLORS = ['#5f5d86', '#9277a5', '#c793c0', '#FD6E6E'];
+
 export default function App() {
   return (
     <>
+      {/* <ShiftBackground
+        palette={LIGHT_PALETTE}
+        saturation={70}
+        lightness={78}
+        maxAlpha={0.65}
+        backgroundColor="hsla(39,100%,96%,1)"
+      />
+      <ShiftBackground
+        palette={DARK_PALETTE}
+        saturation={55}
+        lightness={38}
+        maxAlpha={0.6}
+        backgroundColor="hsla(202,100%,13%,1)"
+      /> */}
+
+      <ShiftBackground
+        colors={LIGHT_COLORS}
+        maxAlpha={0.6}
+        backgroundColor="#FFF8EC"
+        speed={2.5}
+      />
+
       <ShiftBackground />
       <div className="grain" aria-hidden="true" />
       <Navbar />
