@@ -10,6 +10,7 @@ const SKILLS = [
 ];
 
 export default function SkillsRibbon({ skills = SKILLS }) {
+  // Rendered twice so the loop is seamless; the copy is hidden from screen readers.
   const renderList = (hidden) => (
     <ul className="ribbon__list" aria-hidden={hidden || undefined}>
       {skills.map((s) => (
