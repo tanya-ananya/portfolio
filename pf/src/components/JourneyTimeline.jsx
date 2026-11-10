@@ -6,7 +6,7 @@ const JOURNEY = [
     period: 'Summer 2026',
     role: 'AI/ML Intern',
     org: 'Honeywell Technologies',
-    tags: ['AI/ML', 'Data Analysis', 'Product Management', 'UI/UX'],
+    tags: ['AI/ML', 'Data Analysis', 'SQL', 'Product Management', 'Data Visualization', 'UI/UX'],
   },
   {
     id: 'comcast',
@@ -23,25 +23,39 @@ const JOURNEY = [
     tags: ['Android', 'Kotlin', 'JetPack Compose', 'XML', 'OpenAI API'],
   },
   {
-    id: 'uiux',
-    period: '20XX',
+    id: 'amzn',
+    period: 'Winter 2024',
     role: 'UI/UX Design Program',
-    org: '[Company]',
-    tags: ['Figma', 'User research'],
+    org: 'Amazon (w/ CodePath)',
+    tags: ['Figma', 'User research', 'UI/UX', 'customer reserach', 'project planning', 'multi-device design', 'customer testing'],
   },
   {
-    id: 'android',
-    period: '20XX',
-    role: 'Android Engineering Intern',
-    org: '[Company]',
-    tags: ['Kotlin', 'Android'],
+    id: 'jpmc',
+    period: 'Fall 2024',
+    role: 'Technology Career.edYOU Scholar',
+    org: 'JP Morgan & Chase',
+    tags: ['Corporate Practices', 'Collaboration', 'Programming', 'Large Applications', 'Large Database'],
   },
   {
-    id: 'aiml',
-    period: '20XX',
-    role: 'AI/ML Intern',
-    org: '[Company]',
-    tags: ['Python', 'ML'],
+    id: 'ah',
+    period: 'Fall 2024',
+    role: 'Technology Apprentice',
+    org: 'athenahealth (w/ Girls Who Code)',
+    tags: ['Figma', 'Project Planning', 'Interviews', 'UI/UX'],
+  },
+  {
+    id: 'hl',
+    period: 'Summer 2024',
+    role: 'Software Engineer Intern',
+    org: 'Holistic Learning',
+    tags: ['JavaScript', 'Bootstrap', 'AI-assisted Programming', 'Figma'],
+  },
+  {
+    id: 'gwc',
+    period: 'Summer 2022 & 2023',
+    role: 'Software Engineering Summer Program',
+    org: 'Girls Who Code',
+    tags: ['JavaScript', 'Python', 'Cryptography'],
   },
 ];
 
@@ -56,7 +70,7 @@ export default function JourneyTimeline({ items = JOURNEY }) {
   return (
     <div className="journey">
       <div className="journey__header">
-        <h3 className="journey__title">My journey</h3>
+        <h3 className="journey__title">My Journey</h3>
         <div className="journey__arrows">
           <button
             type="button"
