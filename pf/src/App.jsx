@@ -2,11 +2,13 @@ import NavBar from './components/NavBar';
 import SkillsRibbon from './components/SkillsRibbon';
 import AboutIntro from './components/AboutIntro';
 import JourneyTimeline from './components/JourneyTimeline';
+import ThemeToggle from './components/ThemeToggle';
 
 export default function App() {
   return (
     <>
       <NavBar />
+      <ThemeToggle />
 
       <main>
         <section id="home" className="section hero">

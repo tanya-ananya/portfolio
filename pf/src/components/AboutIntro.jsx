@@ -1,6 +1,6 @@
 const ABOUT = {
   paragraphs: [
-    "I'm a software engineer who has been exploring tech since 3rd grade. With the help of my Software Engineer father, I've been various websites, games, and systems for years -- all spurred by my curiousity and excitement for the future through technology.",
+    "I'm a software engineer who has been exploring tech since 3rd grade. With the help of my Software Engineer father, I've been making various websites, games, and systems for years -- all spurred by my curiousity and excitement for the future through technology.",
     "Besides building for a hobby, I'm contributing my skills to engineering in the corporate world. Starting from a **Web Dev internship**, to **two technology apprenticeships**, then a **UI/UX design program**, to an **Android Engineering internship**, & finally an **AI/ML internship**. Expand the tabs below for more on my journey or scroll to 'Experience' for more on my career!",
   ],
   facts: [
