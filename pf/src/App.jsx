@@ -1,5 +1,7 @@
 import NavBar from './components/NavBar';
 import SkillsRibbon from './components/SkillsRibbon';
+import AboutIntro from './components/AboutIntro';
+import JourneyTimeline from './components/JourneyTimeline';
 
 export default function App() {
   return (
@@ -20,8 +22,9 @@ export default function App() {
 
         <section id="about" className="section">
           <div className="section__inner">
-            <h2 className="section__title">About me</h2>
-            <p className="section__text">About me content…</p>
+            <h2 className="section__title">A Little More About Me</h2>
+            <AboutIntro />
+            <JourneyTimeline />
           </div>
         </section>
 
