@@ -24,6 +24,7 @@
   --label: #5F5D86;
 
   color-scheme: light;
+  --dev: #6b2519;
 }
 
 [data-theme="dark"] {
@@ -46,6 +47,7 @@
   --card: #0B3550;
   --card-border: #9277a5;
   --label: #c793c0;
+  --dev: #d4f4ff;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -440,21 +442,14 @@ mark {
 .journey__item {
   position: relative;
   flex: 0 0 min(300px, 80vw);
-  padding-top: 36px;
+  /* =======================================================================================================================*/
+  padding-top: 5px;
+  /* =======================================================================================================================*/
   scroll-snap-align: start;
+  /* =======================================================================================================================*/
+  min-width: 0;
+  /* =======================================================================================================================*/
 }
-
-.journey__item::before {
-  content: "";
-  position: absolute;
-  top: 9px;
-  left: 0;
-  right: -20px;
-  height: 2px;
-  background: var(--card-border);
-  opacity: 0.45;
-}
-.journey__item:last-child::before { right: 0; }
 
 .journey__dot {
   position: absolute;
@@ -603,3 +598,125 @@ mark {
 @media (max-width: 700px) {
   .nav { max-width: calc(100vw - 136px); }
 }
+
+/* ----=============================================================================*/
+
+/* ---------- Key ---------- */
+.journey__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+
+.journey__key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 0;
+  margin: 0;
+  padding: 0 0 0 20px;
+  border-left: 2px solid var(--card-border);
+  list-style: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.journey__key-item { display: flex; align-items: center; gap: 8px; }
+.journey__key-item:not(:first-child)::before {
+  content: "•";
+  margin: 0 12px;
+  color: var(--label);
+}
+.journey__key-dot { flex: none; width: 12px; height: 12px; border-radius: 50%; }
+.journey__key-dot--work { background: var(--nav-bg); }
+.journey__key-dot--leadership { background: var(--card); border: 2px solid var(--card-border); }
+.journey__key-dot--dev { background: var(--card); border: 2px solid var(--dev); }
+
+/* ---------- Bars above the cards ---------- */
+.journey__track { width: max-content; }
+
+/* same column size and gap as the card list, so bars line up with the cards */
+.journey__dev-row {
+  display: grid;
+  grid-auto-columns: min(300px, 80vw);
+  grid-auto-flow: row dense;      /* overlapping bars stack onto new rows */
+  column-gap: 20px;
+  row-gap: 8px;
+  margin-bottom: 14px;
+}
+
+.journey__dev {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 16px;
+  border: 2px solid var(--dev);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--dev);
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* shared column layout: marks, bars and cards all use the same columns */
+.journey__marks,
+.journey__list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(300px, 80vw);
+  column-gap: 20px;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* row 1: line, dot, year */
+.journey__mark {
+  position: relative;
+  padding-top: 26px;            /* year sits just under the line */
+  scroll-snap-align: start;
+}
+.journey__mark::before {        /* the timeline line */
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: -20px;                 /* bridges the gap to the next column */
+  height: 2px;
+  background: var(--card-border);
+  opacity: 0.45;
+}
+.journey__mark:last-child::before { right: 0; }
+
+.journey__dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--card-border);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.journey__mark.is-open .journey__dot {
+  background: var(--coral);
+  border-color: var(--coral);
+}
+
+.journey__period {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+/* =======================================================================================================================*/
