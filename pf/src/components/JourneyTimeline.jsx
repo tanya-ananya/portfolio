@@ -136,27 +136,42 @@ export default function JourneyTimeline({ items = JOURNEY }) {
       </div>
     </div>
   );
+
+{ id: 'ht', period: 'Summer 2026', role: 'AI/ML Intern', org: 'Honeywell Technologies', tags: ['AI/ML', 'Data Analysis', 'SQL', 'Product Management', 'Data Visualization', 'UI/UX'] },
+  { id: 'comcast', period: 'Fall 2025', role: 'First Tech Conference', org: 'NBCUniversal, Comcast, & Xfinity', tags: ['Product Planning', 'UI/UX', 'AI/ML'] },
+  { id: 'thd', period: 'Summer 2025', role: 'SWE - Android Engineer', org: 'The Home Depot', tags: ['Android', 'Kotlin', 'JetPack Compose', 'XML', 'OpenAI API']  },
+  { id: 'amzn', period: 'Winter 2024', role: 'UI/UX Design Program', org: 'Amazon (w/ CodePath)', tags: ['Figma', 'User research', 'UI/UX', 'customer reserach', 'project planning', 'multi-device design', 'customer testing'] },
+  { id: 'jpmc', period: 'Fall 2024', role: 'Technology Career.edYOU Scholar', org: 'JP Morgan & Chase', tags: ['Corporate Practices', 'Collaboration', 'Programming', 'Large Applications', 'Large Database'] },
+  { id: 'ah', period: 'Fall 2024', role: 'Technology Apprentice', org: 'athenahealth (w/ Girls Who Code)', tags: ['Figma', 'Project Planning', 'Interviews', 'UI/UX'] },
+  { id: 'hl', period: 'Summer 2024', role: 'Software Engineer Intern', org: 'Holistic Learning', tags: ['JavaScript', 'Bootstrap', 'AI-assisted Programming', 'Figma'] },
+  { id: 'gwc', period: 'Summer 2022 & 2023', role: 'Software Engineering Summer Program', org: 'Girls Who Code', tags: ['JavaScript', 'Python', 'Cryptography'] },
 } */
 
 import { useId, useRef, useState } from 'react';
 
 const JOURNEY = [
-  { id: 'webdev', period: '20XX', role: 'Web Development Intern', org: '[Company]', tags: ['React', 'JavaScript'] },
-  { id: 'apprenticeship-1', period: '20XX', role: 'Technology Apprentice', org: '[Company]', tags: ['Skill'] },
-  { id: 'android', period: '20XX', role: 'Android Engineering Intern', org: '[Company]', tags: ['Kotlin', 'Android'] },
-  { id: 'aiml', period: '20XX', role: 'AI/ML Intern', org: '[Company]', tags: ['Python', 'ML'] },
+  { id: 'ht', period: 'Summer 2026', role: 'AI/ML Intern', org: 'Honeywell Technologies', tags: ['AI/ML', 'data Analysis', 'SQL', 'product management', 'data Visualization', 'UI/UX'] },
+  { id: 'comcast', period: 'Fall 2025', role: 'First Tech Conference', org: 'NBCUniversal, Comcast, & Xfinity', tags: ['product planning', 'UI/UX', 'AI/ML'] },
+  { id: 'thd', period: 'Summer 2025', role: 'SWE - Android Engineer', org: 'The Home Depot', tags: ['Android', 'Kotlin', 'JetPack Compose', 'XML', 'OpenAI API']  },
+  { id: 'hh', period: 'Spring 2025', role: 'Consumer Behavior & Market Analysis Extern', org: 'Hammer Head Swim Caps', tags: ['user research', 'market research', 'project planning'] },
+  { id: 'amzn', period: 'Winter 2024', role: 'UI/UX Design Program', org: 'Amazon (w/ CodePath)', tags: ['Figma', 'user research', 'UI/UX', 'customer research', 'project planning', 'multi-device design', 'customer testing'] },
+  { id: 'jpmc', period: 'Fall 2024', role: 'Technology Career.edYOU Scholar', org: 'JP Morgan & Chase', tags: ['corporate practices', 'collaboration', 'programming', 'large applications', 'large database'] },
+  { id: 'ah', period: 'Fall 2024', role: 'Technology Apprentice', org: 'athenahealth (w/ Girls Who Code)', tags: ['Figma', 'project planning', 'user interviews', 'UI/UX'] },
+  { id: 'hl', period: 'Summer 2024', role: 'Software Engineer Intern', org: 'Holistic Learning', tags: ['JavaScript', 'Bootstrap', 'AI-assisted Programming', 'Figma'] },
+  { id: 'ex', period: 'Summer 2024', role: 'Digital Marketing Extern', org: 'Extern', tags: ['SEO', 'market research', 'Google Analytics', 'copywriting'] },
+  { id: 'gwc', period: 'Summer 2022 & 2023', role: 'Software Engineering Summer Program', org: 'Girls Who Code', tags: ['JavaScript', 'Python', 'cryptography'] },
 ];
 
 // Bars above the cards. `from` and `to` are card ids; the bar spans from the first card to the last.
 const DEV = [
-  { id: 'dev-1', title: 'Certification or workshop title', from: 'webdev', to: 'apprenticeship-1' },
-  { id: 'dev-2', title: 'Another course or training', from: 'android', to: 'aiml' },
+  { id: 'ambas', title: 'Atlanta Intern Ambassador', from: 'ht', to: 'ht' },
+  { id: 'gwc2', title: 'Global Community Student Lead @ Girls Who Code', from: 'comcast', to: 'thd' },
+  { id: 'cp', title: 'National & E3 Student Lead @ CodePath', from: 'comcast', to: 'ex' },
 ];
 
 const KEY = [
   { id: 'work', label: 'Experience & Development' },
-  { id: 'leadership', label: 'Leadership' },
-  { id: 'dev', label: 'Professional development' },
+  { id: 'dev', label: 'Leadership' },
 ];
 
 export default function JourneyTimeline({ items = JOURNEY, dev = DEV }) {

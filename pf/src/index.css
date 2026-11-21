@@ -24,7 +24,8 @@
   --label: #5F5D86;
 
   color-scheme: light;
-  --dev: #6b2519;
+  --dev: #5F5D86;
+  --dev-border: #FD6E6E;
 }
 
 [data-theme="dark"] {
@@ -102,7 +103,7 @@ body {
   bottom: 0;
   left: 0;
   border-radius: 999px;
-  background: var(--coral);
+  background: var(--ribbon-text);
   pointer-events: none;
 }
 .nav__highlight.is-animated {
@@ -111,7 +112,7 @@ body {
 }
 
 .nav__pill {
-  position: relative;          /* new: keeps text above the highlight */
+  position: relative;
   z-index: 1;
   display: block;
   padding: 8px 16px;
@@ -139,12 +140,10 @@ body {
   outline-offset: 2px;
 }
 
-
-
 /* ---------- Sections ---------- */
 .section {
   min-height: auto;
-  padding: 48px 6vw 9px;
+  padding: 62px 6vw 9px;
   scroll-margin-top: 36px;
 }
 
@@ -651,10 +650,10 @@ mark {
   align-items: center;
   min-height: 36px;
   padding: 0 16px;
-  border: 2px solid var(--dev);
+  border: 2px solid var(--nav-bg);
   border-radius: 999px;
   background: var(--card);
-  color: var(--dev);
+  color: var(--title);
   font-size: 0.9rem;
   font-weight: 700;
   white-space: nowrap;
